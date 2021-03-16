@@ -1,14 +1,14 @@
 const fs = require("fs");
+const path = require("path");
 
 class Logger {
-    constructor(message){
-        fs.appendFileSync('../log.txt',{message},(res,err)=>{
-            if(res){
-                console.log(res.green.underline.bold)
-            }else if(err){
-            }   console.log(err.read.underline.bold)
-        })
-        
-    }
+  constructor(message) {
+    fs.appendFileSync(
+      `${path.dirname(require.main.filename)}/log/database-log.txt`,
+      `${message}\n`
+    );
+    console.log(message.bold.white)
+  }
 }
+
 module.exports = Logger;
